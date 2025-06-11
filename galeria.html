@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galería de Jabones</title>
+    <style>
+        .gallery-section {
+            text-align: center;
+        }
+
+        .gallery-thumbnails {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .gallery-thumbnails img {
+            width: 100px;
+            height: auto;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .gallery-thumbnails img:hover {
+            border-color: #333;
+        }
+
+        .gallery-main img {
+            max-width: 90%;
+            height: auto;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="gallery-section">
+        <h2>Galería</h2>
+        <div class="gallery-thumbnails">
+            <img src="bagba-xabo1.jpg" alt="Jabón 1" onclick="changeMainImage('bagba-xabo1.jpg')">
+            <img src="jabonagua.jpeg" alt="Jabón 2" onclick="changeMainImage('jabonagua.jpeg')">
+            <img src="jabonagua2.jpeg" alt="Jabón 3" onclick="changeMainImage('jabonagua2.jpeg')">
+            <img src="jabon blanco.jpeg" alt="Jabón 4" onclick="changeMainImage('jabon blanco.jpeg')">
+            <img src="bagba-xabo2.jpg" alt="Jabón 5" onclick="changeMainImage('bagba-xabo2.jpg')">
+            <img src="jabon solo.jpeg" alt="Jabón 6" onclick="changeMainImage('jabon solo.jpeg')">
+            <img src="jaboncanasta5.jpeg" alt="Jabón 7" onclick="changeMainImage('jaboncanasta5.jpeg')">
+            <img src="jabonmaguey.jpeg" alt="Jabón 8" onclick="changeMainImage('jabonmaguey.jpeg')">
+            <img src="jabonmanos.jpeg" alt="Jabón 9" onclick="changeMainImage('jabonmanos.jpeg')">
+            <img src="jabonpiedra.jpeg" alt="Jabón 10" onclick="changeMainImage('jabonpiedra.jpeg')">
+        </div>
+
+        <div class="gallery-main">
+            <img id="main-image" src="bagba-xabo1.jpg" alt="Imagen principal de B'agba Xabo">
+        </div>
+    </section>
+
+    <script>
+        function changeMainImage(imageSrc) {
+            document.getElementById('main-image').src = imageSrc;
+        }
+    </script>
+
+</body>
+</html>

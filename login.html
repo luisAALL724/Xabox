@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B'agba Xabo - Tienda</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<script>
+    function calcularTotal() {
+        const cantidad = parseInt(document.getElementById("cantidad").value);
+        const precio = parseFloat(document.getElementById("precio").value);
+        const total = cantidad * precio;
+        document.getElementById("resultado").textContent = `$${total} MXN`;
+    }
+
+    function agregarConTotal() {
+        const cantidad = parseInt(document.getElementById("cantidad").value);
+        const precio = parseFloat(document.getElementById("precio").value);
+        const total = cantidad * precio;
+        const producto = `Pedido por piezas x${cantidad}`;
+
+        // Aquí se llama la función para agregar al carrito
+        addToCart(producto, total);
+    }
+
+    function addToCart(producto, precio) {
+        // Este código muestra en consola, puedes cambiarlo por lógica visual
+        console.log(`Producto agregado: ${producto} - $${precio} MXN`);
+        alert(`Agregado al carrito: ${producto} - $${precio} MXN`);
+    }
+</script>
+
+<body>
+    <header class="header">
+        <h1><i class="fas fa-leaf"></i> B'AGBA XABO</h1>
+        <p class="tagline">Jabón ecológico y natural para cuidar tu piel y el medio ambiente.</p>
+    </header>
+    <a href="mision.html">
+  <button style="padding: 10px 20px; font-size: 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">
+    Detalles
+  </button>
+    <a href="galeria.html">
+   <button style="padding: 10px 20px; font-size: 16px; background-color: #4CAF50; color: white; border: none; border-radius: 5px;">
+    Ir a galeria
+  </button>
+</a>
+
+
+    <main>
+        <section class="products-section">
+                <h3>"¡Hola! Bienvenido/a a B'AGBA XABO, donde cada barra de jabón cuenta una historia de cuidado, respeto y tradición. </h3>
+
+<h3> Aquí encontrarás jabones elaborados con un ingrediente muy especial: ¡suero de leche! No solo mimamos tu piel con hidratación y equilibrio natural, sino que también transformamos este valioso recurso en algo hermoso, promoviendo una economía circular y un futuro más verde para todos.</h3>
+<h3>Suérgete en una experiencia única donde la sustentabilidad se une a la rica cultura otomí. Nuestros empaques biodegradables llevan mensajes en otomí y braille, celebrando nuestra herencia y abriendo las puertas a la inclusión.</h3>
+<h3>¡Descubre el jabón que no solo cuida tu piel, sino también el planeta y sus historias! Explora nuestra colección y únete a la familia B'AGBA XABO."
+</h3>
+
+            <h2>Nuestros Productos</h2>
+            <h2>“Tu piel es tu historia. Cuídala con lo mejor de la naturaleza.”</h2>
+            <div class="product-container">
+                <div class="product">
+                    <img src="jabonagua2.jpeg" alt="B'agba Xabo - Jabón Individual">
+                    <h3>Jabón Individual</h3>
+                    <h4>•	Contiene Suero de Leche: Hidratación y pH equilibrado.<br>
+•	Ideal Piel Sensible: Suave y nutritivo.<br>
+•	100% Artesanal: Hecho con cuidado.<br>
+•	Sustentable: Reutiliza suero, economía circular.<br>
+•	Empaque Biodegradable: Con Braille y Otomí.
+</h4>
+                    <p>$60 MXN</p>
+                    <button onclick="addToCart('Jabón Individual', 60)"><i class="fas fa-cart-plus"></i> Agregar al Carrito</button>
+                </div>
+                <div class="product">
+                    <img src="jabonmaguey.jpeg" alt="B'agba Xabo - Pack Familiar">
+                    <h3>Pack Familiar (3 Jabones)</h3>
+                    <h4>•	Contenido: 3 barras de 90g.<br>
+•	Bienestar Familiar: Para toda la familia.<br>
+•	Económico: Mejor valor por tu compra.<br>
+•	Triple Impacto: Sostenibilidad, Inclusión, Cultura Otomí.<br>
+•	Hecho a Mano: Calidad artesanal.<br>
+•	Compromiso Social: Apoya la comunidad local.
+</h4>
+                    <p>$160 MXN</p>
+                    <button onclick="addToCart('Pack Familiar', 160)"><i class="fas fa-cart-plus"></i> Agregar al Carrito</button>
+                </div>
+                <div class="product">
+                    <img src="jaboncanasta5.jpeg" alt="B'agba Xabo - Jabón Individual">
+                    <h3>Jabón por paquete de 10pz</h3>
+                    <h4>•	Contenido: 10 barras de 90g.<br>
+•	Máximo Ahorro: Excelente relación calidad-precio.<br>
+•	Gran Impacto Ambiental: Mayor contribución a la economía circular.<br>
+•	Abastecimiento Prolongado: Siempre tendrás tu B'AGBA XABO a mano.<br>
+•	Inclusión Activa: Más visibilidad para el braille y el otomí.
+</h4>
+                    <p>$50 MXN</p>
+                    <button onclick="addToCart('Jabón Individual', 400)"><i class="fas fa-cart-plus"></i> Agregar al Carrito</button>
+                </div>
+                <div class="product">
+                    <img src="Imagenjabonsuelto.jpg" alt="B'agba Xabo - Jabón Individual">
+                    
+                    <h3>Pedido por piezas</h3>
+                    <h4>•	Compra Flexible: Pide a partir de 10 unidades.<br>
+•	Precios por Volumen: Beneficios especiales para tu negocio.<br>
+•	Marca con Propósito: Asocia tu marca con la sostenibilidad y la inclusión.<br>
+•	Calidad Dermatológica: Producto ideal para clientes y empleados.<br>
+•	Diferenciador: Resalta el valor cultural y social único.<br>
+•	Genera Empleo Local: Contribuye directamente al desarrollo comunitario.
+</h4>
+                    <p>$50 MXN</p>
+                  <div class="calculator">
+    <label for="cantidad">Cantidad de jabones:</label>
+    <input type="number" id="cantidad" value="1" min="1" /><br>
+
+    <label for="precio">Precio unitario:</label>
+    <input type="number" id="precio" value="50" /><br>
+
+    <button onclick="calcularTotal()">Calcular Total</button>
+
+    <p>Total: <span id="resultado">$50 MXN</span></p>
+</div>
+
+<button onclick="agregarConTotal()"><i class="fas fa-cart-plus"></i> Agregar al Carrito</button>
+
+                </div>
+                
+                <script>
+                    // Función para calcular el total basado en la cantidad seleccionada
+                    function calcularTotal() {
+                        var cantidad = document.getElementById("cantidad").value;
+                        var precioUnitario = document.getElementById("precio").value;
+                        var total = cantidad * precioUnitario;
+                        document.getElementById("resultado").innerHTML = "$" + total + " MXN";
+                    }
+                
+                    // Función para agregar al carrito (para ilustración, puedes expandirla según lo necesites)
+                    function addToCart(producto, precio) {
+                        console.log("Producto agregado al carrito: " + producto + " con precio " + precio + " MXN");
+                        // Aquí puedes añadir más lógica para agregar el producto al carrito de compras.
+                    }
+                </script>
+                
+            </div>
+        </section>
+
+     
+        <section class="cart-section">
+            <h2>Carrito de Compras</h2>
+            <ul id="cart-items"></ul>
+            <p id="total"></p>
+            <div class="payment-buttons">
+                <button id="pay-button"><i class="fas fa-credit-card"></i> Pagar con Mercado Pago</button>
+                <button id="paypal-button"><i class="fab fa-paypal"></i> Pagar con PayPal</button>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p><i class="fas fa-seedling"></i> B'agba Xabo - Cuidando tu piel y el planeta.</p>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+</html>

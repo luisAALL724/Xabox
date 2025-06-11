@@ -1,0 +1,111 @@
+let cart = [];
+const cartItems = document.getElementById('cart-items');
+const totalElement = document.getElementById('total');
+const payButton = document.getElementById('pay-button');
+const mainImage = document.getElementById('main-image');
+
+// Agregar producto al carrito
+function updateCart() {
+    cartItems.innerHTML = '';
+    let total = 0;
+    cart.forEach((item, index) => {
+        total += item.price;
+
+        // Crear el elemento de la lista con el producto
+        const listItem = document.createElement('li');
+        listItem.textContent = `${item.name} - $${item.price} MXN`;
+
+        // Crear el botón de eliminar
+        const removeButton = document.createElement('button');
+        removeButton.textContent = 'Eliminar';
+        removeButton.onclick = () => removeFromCart(index);
+
+        // Añadir el botón al elemento de la lista
+        listItem.appendChild(removeButton);
+        cartItems.appendChild(listItem);
+    });
+    totalElement.textContent = `Total: $${total} MXN`;
+    updatePayButton(total);
+}
+
+// Nueva función para eliminar productos
+function removeFromCart(index) {
+    cart.splice(index, 1);
+    updateCart();
+}
+
+
+// Actualizar contenido del carrito
+function addToCart(productName, price) {
+    if (!productName || price <= 0) {
+        console.error('Producto inválido o precio incorrecto.');
+        return;
+    }
+    const product = { name: productName, price: price };
+    cart.push(product);
+    updateCart();
+    sendCartToServer();
+}
+
+function sendCartToServer() {
+    fetch('ej.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(cart),
+    })
+    .then(response => response.json())
+    .then(data => console.log('Carrito actualizado en el servidor:', data))
+    .catch(error => console.error('Error al enviar el carrito:', error));
+}
+
+
+// Actualizar botón de pago
+function updatePayButton(total) {
+    if (total > 0) {
+        payButton.disabled = false;
+        payButton.onclick = () => {
+            fetch('generate_preference.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(cart),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    window.location.href = `https://www.mercadopago.com.mx/checkout/v1/redirect?pref_id=${data.preference_id}`;
+                } else {
+                    showErrorMessage('Error al generar preferencia: ' + data.message);
+                }
+            })
+            .catch(error => showErrorMessage('Error al generar preferencia: ' + error.message));
+        };
+    } else {
+        payButton.disabled = true;
+        payButton.onclick = null;
+    }
+}
+
+// Nueva función para mostrar mensajes de error
+function showErrorMessage(message) {
+    const errorContainer = document.getElementById('error-container');
+    if (!errorContainer) {
+        const errorElement = document.createElement('div');
+        errorElement.id = 'error-container';
+        errorElement.style.color = 'red';
+        errorElement.textContent = message;
+        document.body.appendChild(errorElement);
+    } else {
+        errorContainer.textContent = message;
+    }
+}
+
+
+// Cambiar imagen principal en galería
+function changeMainImage(imageSrc) {
+    if (mainImage) {
+        mainImage.src = imageSrc;
+    }
+}
+
+// Inicializar botón de pago
+updatePayButton(0);

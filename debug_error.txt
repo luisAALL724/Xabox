@@ -1,0 +1,1 @@
+Error en la decodificación del JSON: Syntax error
